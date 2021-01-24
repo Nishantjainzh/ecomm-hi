@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Ecommerve site</title>
-	<h1>Flipkart</h1>
+	<h1>Jain Flipkart</h1>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
@@ -17,4 +17,21 @@
 	
 	
 </body>
+<style type="text/css">
+	img.slider-img{
+		height: 500px !important; 
+	}
+	img.slider-img1{
+		height: 250px;
+		width: 250px;
+	}
+	.trending-item{
+		float: left;
+		width: 20%;
+	}
+	.detail-img{
+		height: 700px;
+		width: 500px;
+	}
+</style>
 </html>

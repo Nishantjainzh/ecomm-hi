@@ -20,4 +20,7 @@ class UserController extends Controller
     	}
     	
     }
+    function Showlogin(){
+        return view('login');
+    }
 }

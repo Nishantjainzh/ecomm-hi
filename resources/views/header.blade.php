@@ -1,3 +1,13 @@
+<?php 
+use App\Http\Controllers\ProductController;
+//$call = new ProductController;
+$total = 0;
+if(Session::has('user')){
+  $total = ProductController::countItem();
+}
+
+?>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -14,18 +24,29 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">E-Home <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="{{url('/')}}" class="btn btn-primary" style="color: black;">E-Home</a></li>
         <li><a href="#">Orders</a></li>
         
       </ul>
-      <form class="navbar-form navbar-left">
+      <form action="{{url('/search')}}" class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" name="query" class="form-control" placeholder="Search...." style="width: 300px;">
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Add to cart</a></li>
+        @if(Session::has('user'))
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Session::get('user')['name']}}
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{url('/logout')}}">LogOut</a></li>
+        </ul>
+      </li>
+      <li>@else
+      <a href="{{url('/login')}}" style="color: blue; font-size: 15px;">Login</a>
+      @endif</li>
+        <li><a href="{{url('/cartItem')}}" style="color: blue; font-size: 15px;">Cart Items {{$total}}</a></li>
         
       </ul>
     </div><!-- /.navbar-collapse -->
